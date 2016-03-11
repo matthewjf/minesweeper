@@ -1,11 +1,13 @@
 class Tile
+  attr_accessor :adjacent_bombs_count
 
   def initialize
-    @reveal = true
+    @reveal = false
     @bomb = false
+    @adjacent_bombs_count = 0
   end
 
-  def reveal?
+  def revealed?
     @reveal
   end
 
@@ -23,11 +25,11 @@ class Tile
 
   def to_s
     if @bomb && @reveal
-      "B"
+      "X"
     elsif @reveal
-      "_"
+      @adjacent_bombs_count.to_s
     else
-      " "
+      "_"
     end
   end
 
