@@ -1,3 +1,4 @@
+require 'colorize'
 class Tile
   attr_accessor :adjacent_bombs_count
 
@@ -25,11 +26,11 @@ class Tile
 
   def to_s
     if @bomb && @reveal
-      "X"
+      "X".colorize(:red)
     elsif @reveal
-      @adjacent_bombs_count.to_s
+      @adjacent_bombs_count == 0 ? " " : @adjacent_bombs_count.to_s.colorize(:green)
     else
-      "_"
+      "_".colorize(:grey)
     end
   end
 
